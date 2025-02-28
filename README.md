@@ -61,8 +61,13 @@ Microsoft Excel's worksheet capacity is limited to 1,048,576 rows, making it uns
 ### Combining the Data
 The data is merged using an SQL query script. The 12 CSV files are uploaded to the dataset '2023_tripdata', and a new table named "combined_data" is created, consolidating 5,719,877 rows of data for the entire year.
 
-### Data Exploration
-SQL Query: [Data Exploration](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/02.%20Data%20Exploration.sql)  
+SELECT COUNT(*) as total_rows
+FROM `cyclist-415619.Cyclist.2023_tripdata_combined`;
+
+![image](https://github.com/user-attachments/assets/dadc21ec-ec14-431c-87dc-107e2bb50e9b)
+
+
+### Data Process and Exploration
 Before cleaning the data, I am familiarizing myself with the data to find the inconsistencies.  
 
 Observations:  
