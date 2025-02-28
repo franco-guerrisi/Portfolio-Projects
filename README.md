@@ -59,37 +59,36 @@ To manage the dataset efficiently, BigQuery is employed for combining and cleani
 Microsoft Excel's worksheet capacity is limited to 1,048,576 rows, making it unsuitable for handling large datasets. With over 5.7 million rows of data, BigQuery offers the required scalability to manage such volumes effectively.
 
 ### Combining the Data
-The data is merged using an SQL query script. The 12 CSV files are uploaded to the dataset '2023_tripdata', and a new table named "combined_data" is created, consolidating 5,719,877 rows of data for the entire year.
+First I check if all tables share the same name and quantity of columns, then the data is merged using an SQL query. The 12 CSV files are uploaded to the dataset '2023_tripdata', and a new table named "combined_data" is created, consolidating 5,719,877 rows of data for the entire year.
 
-SELECT COUNT(*) as total_rows
-FROM `cyclist-415619.Cyclist.2023_tripdata_combined`;
 
 ![image](https://github.com/user-attachments/assets/dadc21ec-ec14-431c-87dc-107e2bb50e9b)
 
 
 ### Data Process and Exploration
-Before cleaning the data, I am familiarizing myself with the data to find the inconsistencies.  
+I first examine the table structure, getting the column names datatypes. The __ride_id__ column will be my primary key.  
 
-Observations:  
-1. The table below shows the all column names and their data types. The __ride_id__ column is our primary key.  
 
-   ![image](https://user-images.githubusercontent.com/125132307/226139161-c5209861-7542-4ad6-8d9a-ce0115086e4d.png)  
+![image](https://github.com/user-attachments/assets/c129f893-35c0-41f1-a5f4-8a7a7076b340)
+ 
 
-2. The following table shows number of __null values__ in each column.  
+Then I check for number of null values in all columns. The notation COUNT(column_name) only considers rows where the column contains a non-NULL value. Also checking earliest and latest date for quality. 
    
-   ![image](https://user-images.githubusercontent.com/125132307/226182623-1f3378b1-c4b2-403e-8a41-7916aacd3666.png)
 
-   Note that some columns have same number of missing values. This may be due to missing information in the same row i.e. station's name and id for the same station and latitude and longitude for the same ending station.  
-3. As ride_id has no null values, let's use it to check for duplicates.  
+![image](https://github.com/user-attachments/assets/fea3da6b-85d9-4e12-a406-e83f86f4b695)
 
-   ![image](https://user-images.githubusercontent.com/125132307/226181500-38f9b3ca-811d-4612-87ea-87b6d1d3843e.png)
 
-   There are no __duplicate__ rows in the data.  
+I note that some columns have same number of missing values. So, this may be due to missing information in the same row i.e. station's name and id for the same station and latitude and longitude for the same ending station.
+
+Finally, as ride_id has no null values, I'll use it to check for duplicates. 
+No __duplicate__ rows were found.
    
-4. All __ride_id__ values have length of 16 so no need to clean it.
-5. There are 3 unique types of bikes(__rideable_type__) in our data.
+All __ride_id__ values have length of 16 so no need to clean it.
 
-   ![image](https://user-images.githubusercontent.com/125132307/226203372-10c60802-0880-4b17-9ac0-2177ab862974.png)
+Now I check the unique types of bikes(__rideable_type__) in our data.
+
+![image](https://github.com/user-attachments/assets/20253bbf-7ca9-49a5-b2a1-fb85821aeafd)
+
 
 6. The __started_at__ and __ended_at__ shows start and end time of the trip in YYYY-MM-DD hh:mm:ss UTC format. New column ride_length can be created to find the total trip duration. There are 5360 trips which has duration longer than a day and 122283 trips having less than a minute duration or having end time earlier than start time so need to remove them. Other columns day_of_week and month can also be helpful in analysis of trips at different times in a year.
 7. Total of 833064 rows have both __start_station_name__ and __start_station_id__ missing which needs to be removed.  
