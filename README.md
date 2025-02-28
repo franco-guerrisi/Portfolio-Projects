@@ -20,44 +20,47 @@ SQL Queries:
 [Data Analysis]
   
 Data Visualizations: [Tableau](https://public.tableau.com/app/profile/somia.nasir/viz/bike-tripdata-casestudy/Dashboard1#1)  
-## Background
-### Cyclistic
-A bike-share program that features more than 5,800 bicycles and 600 docking stations. Cyclistic sets itself apart by also offering reclining bikes, hand tricycles, and cargo bikes, making bike-share more inclusive to people with disabilities and riders who can’t use a standard two-wheeled bike. The majority of riders opt for traditional bikes; about 8% of riders use the assistive options. Cyclistic users are more likely to ride for leisure, but about 30% use them to commute to work each day.   
-  
-Until now, Cyclistic’s marketing strategy relied on building general awareness and appealing to broad consumer segments. One approach that helped make these things possible was the flexibility of its pricing plans: single-ride passes, full-day passes, and annual memberships. Customers who purchase single-ride or full-day passes are referred to as casual riders. Customers who purchase annual memberships are Cyclistic members.  
-  
-Cyclistic’s finance analysts have concluded that annual members are much more profitable than casual riders. Although the pricing flexibility helps Cyclistic attract more customers, Moreno (the director of marketing and my manager) believes that maximizing the number of annual members will be key to future growth. Rather than creating a marketing campaign that targets all-new customers, Moreno believes there is a very good chance to convert casual riders into members. She notes that casual riders are already aware of the Cyclistic program and have chosen Cyclistic for their mobility needs.  
 
-Moreno has set a clear goal: Design marketing strategies aimed at converting casual riders into annual members. In order to do that, however, the marketing analyst team needs to better understand how annual members and casual riders differ, why casual riders would buy a membership, and how digital media could affect their marketing tactics. Moreno and her team are interested in analyzing the Cyclistic historical bike trip data to identify trends.  
+### Background
+Cyclistic operates a bike-share program with over 5,800 bicycles and 600 docking stations. What makes Cyclistic unique is its inclusive approach, offering reclining bikes, hand tricycles, and cargo bikes to accommodate individuals with disabilities and riders who cannot use a standard two-wheeled bike. While the majority of users prefer traditional bicycles, around 8% take advantage of these assistive options. Most Cyclistic riders use the service for leisure, although approximately 30% rely on it for daily commuting.
+
+To date, Cyclistic’s marketing efforts have focused on generating general awareness and targeting broad consumer groups. A key element of this strategy has been the flexibility of its pricing plans, which include single-ride passes, full-day passes, and annual memberships. Customers who opt for single-ride or full-day passes are called casual riders, while those who purchase annual memberships are considered Cyclistic members.
+
+Financial analysis reveals that annual members generate significantly more profit than casual riders. While the flexible pricing structure has been effective in attracting customers, Moreno, Cyclistic’s director of marketing, believes the company’s growth depends on increasing the number of annual memberships. Rather than focusing on acquiring entirely new customers, she sees an opportunity to convert casual riders into annual members, as these riders are already familiar with Cyclistic and use the service for their transportation needs.
+
+Moreno has outlined a clear goal: develop marketing strategies to turn casual riders into annual members. To achieve this, the marketing analyst team needs to explore how annual members and casual riders differ, identify the factors that would encourage casual riders to purchase a membership, and assess the potential role of digital media in their marketing efforts. To support this, Moreno’s team plans to analyze historical bike trip data to uncover trends and actionable insights.
 
 ### Scenario
-I am assuming to be a junior data analyst working in the marketing analyst team at Cyclistic, a bike-share company in Chicago. The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore, my team wants to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, my team will design a new marketing strategy to convert casual riders into annual members. But first, Cyclistic executives must approve our recommendations, so they must be backed up with compelling data insights and professional data visualizations.
+As a junior data analyst on Cyclistic’s marketing team in Chicago, my primary focus is helping the company achieve its goal of maximizing annual memberships. My team aims to understand how casual riders and annual members utilize Cyclistic’s services differently. These insights will guide the creation of a targeted marketing strategy to convert casual riders into members. However, before implementation, the recommendations must be validated with compelling data insights and professional data visualizations to gain executive approval.
 
 ## Ask
 ### Business Task
-Devise marketing strategies to convert casual riders to members.
+Analyze Cyclistic's historical bike trip data to identify trends and patterns in how casual riders and annual members use the service. This analysis aims to uncover insights that will guide the development of targeted marketing strategies to convert casual riders into annual members, thereby increasing overall profitability and supporting the company’s growth objectives.
 ### Analysis Questions
-Three questions will guide the future marketing program:  
-1. How do annual members and casual riders use Cyclistic bikes differently?  
-2. Why would casual riders buy Cyclistic annual memberships?  
-3. How can Cyclistic use digital media to influence casual riders to become members?  
+Questions that will guide the future marketing program:  
+- Usage Patterns: How do casual riders and annual members differ in their usage of Cyclistic’s services (e.g., trip duration, time of use, popular routes)?
+- Conversion Motivators: What factors might encourage casual riders to transition to annual memberships (e.g., cost savings, convenience, frequency of use)?
+- Digital Media Impact: How can digital marketing channels and campaigns effectively influence casual riders to become annual members?
 
-Moreno has assigned me the first question to answer: How do annual members and casual riders use Cyclistic bikes differently?
+Moreno has assigned me the first question to answer: How do casual riders and annual members differ in their usage of Cyclistic’s services?
+
 ## Prepare
 ### Data Source
-I will use Cyclistic’s historical trip data to analyze and identify trends from Jan 2022 to Dec 2022 which can be downloaded from [divvy_tripdata](https://divvy-tripdata.s3.amazonaws.com/index.html). The data has been made available by Motivate International Inc. under this [license](https://www.divvybikes.com/data-license-agreement).  
-  
-This is public data that can be used to explore how different customer types are using Cyclistic bikes. But note that data-privacy issues prohibit from using riders’ personally identifiable information. This means that we won’t be able to connect pass purchases to credit card numbers to determine if casual riders live in the Cyclistic service area or if they have purchased multiple single passes.
+Cyclistic's historical trip data, covering the period from January 2023 to December 2023, will be utilized to analyze and identify trends. The dataset is publicly accessible and can be downloaded from [divvy_tripdata](https://divvy-tripdata.s3.amazonaws.com/index.html). It has been provided by Motivate International Inc. under this [license](https://www.divvybikes.com/data-license-agreement).
+
+This data allows for an exploration of how different customer segments use Cyclistic's services. However, due to data privacy constraints, personally identifiable information about riders cannot be used. As a result, it is not possible to link pass purchases to credit card details to determine whether casual riders live within the Cyclistic service area or have purchased multiple single passes.
+
 ### Data Organization
-There are 12 files with naming convention of YYYYMM-divvy-tripdata and each file includes information for one month, such as the ride id, bike type, start time, end time, start station, end station, start location, end location, and whether the rider is a member or not. The corresponding column names are ride_id, rideable_type, started_at, ended_at, start_station_name, start_station_id, end_station_name, end_station_id, start_lat, start_lng, end_lat, end_lng and member_casual.
+The dataset has 12 files named according to the format YYYYMM-divvy-tripdata, with each file representing one month of data. The data includes key details such as ride ID, bike type, start and end times, start and end stations, geographic locations, and rider type (casual or member). The corresponding columns are labeled as ride_id, rideable_type, started_at, ended_at, start_station_name, start_station_id, end_station_name, end_station_id, start_lat, start_lng, end_lat, end_lng, and member_casual.
 
 ## Process
-BigQuery is used to combine the various datasets into one dataset and clean it.    
-Reason:  
-A worksheet can only have 1,048,576 rows in Microsoft Excel because of its inability to manage large amounts of data. Because the Cyclistic dataset has more than 5.6 million rows, it is essential to use a platform like BigQuery that supports huge volumes of data.
+To manage the dataset efficiently, BigQuery is employed for combining and cleaning the data.  
+**Reason:**  
+Microsoft Excel's worksheet capacity is limited to 1,048,576 rows, making it unsuitable for handling large datasets. With over 5.7 million rows of data, BigQuery offers the required scalability to manage such volumes effectively.
+
 ### Combining the Data
-SQL Query: [Data Combining](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/01.%20Data%20Combining.sql)  
-12 csv files are uploaded as tables in the dataset '2022_tripdata'. Another table named "combined_data" is created, containing 5,667,717 rows of data for the entire year. 
+The data is merged using an SQL query script. The 12 CSV files are uploaded to the dataset '2023_tripdata', and a new table named "combined_data" is created, consolidating 5,719,877 rows of data for the entire year.
+
 ### Data Exploration
 SQL Query: [Data Exploration](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/02.%20Data%20Exploration.sql)  
 Before cleaning the data, I am familiarizing myself with the data to find the inconsistencies.  
