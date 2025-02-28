@@ -87,25 +87,29 @@ All __ride_id__ values have length of 16 so no need to clean it.
 
 Now I check the unique types of bikes(__rideable_type__) in our data.
 
-![image](https://github.com/user-attachments/assets/20253bbf-7ca9-49a5-b2a1-fb85821aeafd)
+
+![image](https://github.com/user-attachments/assets/ff596606-cbf1-4dae-a000-c5dee79c49ec)
 
 
-6. The __started_at__ and __ended_at__ shows start and end time of the trip in YYYY-MM-DD hh:mm:ss UTC format. New column ride_length can be created to find the total trip duration. There are 5360 trips which has duration longer than a day and 122283 trips having less than a minute duration or having end time earlier than start time so need to remove them. Other columns day_of_week and month can also be helpful in analysis of trips at different times in a year.
-7. Total of 833064 rows have both __start_station_name__ and __start_station_id__ missing which needs to be removed.  
-8. Total of 892742 rows have both __end_station_name__ and __end_station_id__ missing which needs to be removed.
-9. Total of 5858 rows have both __end_lat__ and __end_lng__ missing which needs to be removed.
-10. __member_casual__ column has 2 uniqued values as member or casual rider.
+The __started_at__ and __ended_at__ shows start and end time of the trip in YYYY-MM-DD hh:mm:ss UTC format. 
 
-    ![image](https://user-images.githubusercontent.com/125132307/226212522-aec43490-5d86-4e2e-a92e-b3bf52050415.png)
+New column ride_length can be created to find the total trip duration. 
 
-11. Columns that need to be removed are start_station_id and end_station_id as they do not add value to analysis of our current problem. Longitude and latitude location columns may not be used in analysis but can be used to visualise a map.
+There are 6418 trips which has duration longer than a day and 151069 trips having less than a minute duration or having end time earlier than start time so need to remove them. Other columns day_of_week and month can also be helpful in analysis of trips at different times in a year.
+
+Total of 875848 rows have both __start_station_name__ and __start_station_id__ missing which needs to be removed.  
+Total of 929343 rows have both __end_station_name__ and __end_station_id__ missing which needs to be removed.
+Total of 6990 rows have both __end_lat__ and __end_lng__ missing which needs to be removed.
+The __member_casual__ column has 2 uniqued values as member or casual rider.
+
+So, the columns that need to be removed are: start_station_id and end_station_id, as they do not add value, only the names are usefull. Longitude and latitude location columns may not be used in analysis but can be used to visualise a map.
 
 ### Data Cleaning
-SQL Query: [Data Cleaning](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/03.%20Data%20Cleaning.sql)  
-1. All the rows having missing values are deleted.  
-2. 3 more columns ride_length for duration of the trip, day_of_week and month are added.  
-3. Trips with duration less than a minute and longer than a day are excluded.
-4. Total 1,375,912 rows are removed in this step.
+
+Here I create a new table, only incluiding rides duration that lasts longer than 1 minute and less than a day, using CASE on day_of_week and month for further analysis adding three new columns (ride_length, day_of_week and month), and deleting all missing values using WHERE IS NOT NULL. 
+So, in total 1,476,445 rows are removed in this step.
+
+Then I set ride_id as primary key, and use ROUND on ride_lenght to round minutes.
   
 ## Analyze and Share
 SQL Query: [Data Analysis](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/04.%20Data%20Analysis.sql)  
