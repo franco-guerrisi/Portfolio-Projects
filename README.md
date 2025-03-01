@@ -165,6 +165,16 @@ Segmentation by user type: These queries add the crucial member/casual dimension
 Different ordering priorities: Each query can order results to highlight different priorities (seasonal peaks, busiest days, etc.)
 
 
+![image](https://github.com/user-attachments/assets/daa8b4b1-b087-43a8-be10-ef737acc4ad7)
+
+
+![image](https://github.com/user-attachments/assets/b71f2da4-0f9b-4f77-bae8-9efc95a6d820)
+
+
+![image](https://github.com/user-attachments/assets/9a5dff86-30bb-47b6-a157-52e69e58146d)
+
+
+
 #### Duration distribution by user type. Median and Mean.
 The previous queries gave me information about ride counts and average durations across different dimensions (user types, time periods, bike types). However, averages alone can be misleading when we have skewed distributions, which is common in ride duration data.
 This query addresses that limitation by calculating both the median and mean duration for each user type. This comparison tells me something fundamentally important about the data distribution:
@@ -183,19 +193,37 @@ Bike Availability & Demand Planning: Since half of casual rides are under 11 min
 Pricing Strategy: If some casual riders are taking very long rides, you could explore whether they’re tourists or users misusing the system. Adjusting pricing (e.g., charging more for very long trips) could balance usage.
 Potential Anomalies: Some casual rides might be so long that they indicate user forgetfulness (e.g., not ending trips properly). Investigating these cases could reduce operational inefficiencies.
 
+As my goal is to explore trends by time (month, day, hour), the next queries with average duration in months, weeks and days are highly valuable.
 
+#### Understanding station usage patterns and travel routes
 
+Most Popular Start and End Stations:
+- Identifies the most frequently used starting/ending stations for bike trips. 
+- Differentiates usage casual vs. member.
+- Provides approximate coordinates (average latitude and longitude) for mapping.
+- Helps optimize bike distribution — more bikes should be available at high-traffic start stations at certain times. Therefore, also useful for expansion planning—if certain stations are frequently used, adding more bikes or stations nearby may improve service.
+- Helps understand drop-off patterns—bikes should be rebalanced toward high-arrival stations.
+- Useful for service adjustments, ensuring that stations with high arrivals have enough docking space.
+- Helps in predicting future station placement needs.
 
+![image](https://github.com/user-attachments/assets/c7cfad2d-3c4e-49b6-91ab-50a4e90737b8)
 
+![image](https://github.com/user-attachments/assets/914debd0-8e05-4324-af68-f35f7875524f)
 
-  
-Summary:
-  
-|Casual|Member|
-|------|------|
-|Prefer using bikes throughout the day, more frequently over the weekends in summer and spring for leisure activities.|Prefer riding bikes on week days during commute hours (8 am / 5pm) in summer and spring.|
-|Travel 2 times longer but less frequently than members.|Travel more frequently but shorter rides (approximately half of casual riders' trip duration).|
-|Start and end their journeys near parks, museums, along the coast and other recreational sites.|Start and end their trips close to universities, residential and commercial areas.|  
+Route Analysis
+- Identifies the most frequently used routes.
+- Shows trip counts to rank the most popular routes.
+- Helps understand commuting behavior.
+- Allows optimization of bike availability along popular routes.
+- Useful for marketing and promotions—discounts or incentives can be targeted at specific routes.
+- Supports infrastructure planning, like adding bike lanes along high-traffic routes.
+
+![image](https://github.com/user-attachments/assets/c6fb9a96-04ea-48b0-becf-e972e5be948f)
+
+### Summary:  
+Casual riders tend to take longer trips on average, but their ride durations are highly variable, often influenced by outliers. They are more likely to ride on weekends and during warmer months, suggesting a preference for recreational or tourism-based cycling. In contrast, annual members take shorter, more consistent trips, with higher usage during weekdays and peak commuting hours, indicating a reliance on bike-sharing for daily transportation.
+
+To convert casual riders into members, Cyclistic could offer targeted incentives such as discounted first-month memberships, loyalty rewards, or flexible pricing plans. Highlighting the cost savings of membership for frequent riders, improving convenience with station expansions, and offering perks like priority access or referral bonuses could also increase conversions. Additionally, promoting the benefits of membership through personalized marketing and in-app notifications at the end of casual trips may encourage sign-ups.
 
 ## Share
 Data Visualization: [Tableau]
@@ -207,3 +235,5 @@ Recommendations:
 1. Marketing campaigns might be conducted in spring and summer at tourist/recreational locations popular among casual riders.
 2. Casual riders are most active on weekends and during the summer and spring, thus they may be offered seasonal or weekend-only memberships.
 3. Casual riders use their bikes for longer durations than members. Offering discounts for longer rides may incentivize casual riders and entice members to ride for longer periods of time.
+4. 
+To convert casual riders into members, Cyclistic could offer targeted incentives such as discounted first-month memberships, loyalty rewards, or flexible pricing plans. Highlighting the cost savings of membership for frequent riders, improving convenience with station expansions, and offering perks like priority access or referral bonuses could also increase conversions. Additionally, promoting the benefits of membership through personalized marketing and in-app notifications at the end of casual trips may encourage sign-ups.
