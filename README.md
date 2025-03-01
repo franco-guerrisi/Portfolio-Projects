@@ -111,47 +111,83 @@ So, in total 1,476,445 rows are removed in this step.
 
 Then I set ride_id as primary key, and use ROUND on ride_lenght to round minutes.
   
-## Analyze and Share
-SQL Query: [Data Analysis](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/04.%20Data%20Analysis.sql)  
-Data Visualization: [Tableau](https://public.tableau.com/app/profile/somia.nasir/viz/bike-tripdata-casestudy/Dashboard1#1)  
-The data is stored appropriately and is now prepared for analysis. I queried multiple relevant tables for the analysis and visualized them in Tableau.  
-The analysis question is: How do annual members and casual riders use Cyclistic bikes differently?  
+## Analyze 
+SQL Query: [Data Analysis] 
+  
+The analysis question is: How do casual riders and annual members differ in their usage of Cyclistic’s services?  
 
-First of all, member and casual riders are compared by the type of bikes they are using.  
+#### User Segmentation Analysis
+My first query shows a clear distinction between member and casual riders:
 
-![image](https://user-images.githubusercontent.com/125132307/226692931-ecd2eb32-ffce-481a-b3c2-a6c3b4f3ceb7.png)
-  
-The members make 59.7% of the total while remaining 40.3% constitutes casual riders. Each bike type chart shows percentage from the total. Most used bike is classic bike followed by the electric bike. Docked bikes are used the least by only casual riders. 
-  
-Next the number of trips distributed by the months, days of the week and hours of the day are examined.  
-  
-![image](https://user-images.githubusercontent.com/125132307/230122705-2f157258-e673-4fc5-bbed-88050b6aae68.png)
-![image](https://user-images.githubusercontent.com/125132307/230122935-8d0889c3-f0ff-43ce-94ab-393f2e230bee.png)
-  
-__Months:__ When it comes to monthly trips, both casual and members exhibit comparable behavior, with more trips in the spring and summer and fewer in the winter. The gap between casuals and members is closest in the month of july in summmer.   
-__Days of Week:__ When the days of the week are compared, it is discovered that casual riders make more journeys on the weekends while members show a decline over the weekend in contrast to the other days of the week.  
-__Hours of the Day:__ The members shows 2 peaks throughout the day in terms of number of trips. One is early in the morning at around 6 am to 8 am and other is in the evening at around 4 pm to 8 pm while number of trips for casual riders increase consistently over the day till evening and then decrease afterwards.  
-  
-We can infer from the previous observations that member may be using bikes for commuting to and from the work in the week days while casual riders are using bikes throughout the day, more frequently over the weekends for leisure purposes. Both are most active in summer and spring.  
-  
-Ride duration of the trips are compared to find the differences in the behavior of casual and member riders.  
-  
-![image](https://user-images.githubusercontent.com/125132307/230164787-3ea46ee9-aa5f-486b-9dd1-8f43dfce8e1c.png)  
-![image](https://user-images.githubusercontent.com/125132307/230164889-1c7943d2-7ada-411b-adc7-a043eb480ba1.png)
-  
-Take note that casual riders tend to cycle longer than members do on average. The length of the average journey for members doesn't change throughout the year, week, or day. However, there are variations in how long casual riders cycle. In the spring and summer, on weekends, and from 10 am to 2 pm during the day, they travel greater distances. Between five and eight in the morning, they have brief trips.
-  
-These findings lead to the conclusion that casual commuters travel longer (approximately 2x more) but less frequently than members. They make longer journeys on weekends and during the day outside of commuting hours and in spring and summer season, so they might be doing so for recreation purposes.    
-  
-To further understand the differences in casual and member riders, locations of starting and ending stations can be analysed. Stations with the most trips are considered using filters to draw out the following conclusions.  
-  
-![image](https://user-images.githubusercontent.com/125132307/230248445-3fe69cbb-30a9-42c6-b5e8-ab433a620ff3.png)  
-  
-Casual riders have frequently started their trips from the stations in vicinity of museums, parks, beach, harbor points and aquarium while members have begun their journeys from stations close to universities, residential areas, restaurants, hospitals, grocery stores, theatre, schools, banks, factories, train stations, parks and plazas.  
-  
-![image](https://user-images.githubusercontent.com/125132307/230253219-4fb8a2ed-95e3-4e52-a359-9d86945b7a75.png)
-  
-Similar trend can be observed in ending station locations. Casual riders end their journay near parks, museums and other recreational sites whereas members end their trips close to universities, residential and commmercial areas. So this proves that casual riders use bikes for leisure activities while members extensively rely on them for daily commute.  
+![image](https://github.com/user-attachments/assets/09f8384f-bcef-45eb-af52-01cc72435431)
+
+
+- Usage Volume: Members (3,660,698 rides) account for about 64% of total rides, while casual riders (2,059,179 rides) make up 36%. This indicates your subscription model is successfully capturing the majority of rides.
+
+- Ride Duration: There's a striking difference in how these groups use the service. Casual riders take significantly longer trips (27.7 minutes on average) compared to members (12.0 minutes). This suggests members are primarily using the service for efficient, purposeful transportation like commuting, while casual riders are more likely using it for leisure, sightseeing, or recreation.
+
+- Geographic Diversity: Members start their rides from more unique locations (1,274,765) than casual riders (766,925), indicating they use the system more widely across the service area. This suggests members integrate bike-sharing more thoroughly into their daily lives, while casual riders might concentrate around tourist attractions, parks, or popular destinations.
+
+
+#### Bike Type Preferences
+The second query reveals interesting equipment preferences:
+
+![image](https://github.com/user-attachments/assets/06697382-a4ba-46f8-aa85-f01a9e3f8ec6)
+
+
+- Casual Riders: Among casual riders, classic bikes are most popular (860,517 trips), followed by electric bikes (569,092 trips), with relatively few docked bike trips (75,372). The preference for classic bikes might indicate price sensitivity (if e-bikes cost more) or that many casual riders enjoy the exercise aspect of cycling.
+- Members: Members also prefer classic bikes (1,788,516 trips) to electric bikes (949,935 trips), but the proportion of electric bike usage is higher among members (35%) than among casual riders (30%). This might suggest that members, who are using the system for more practical transportation, value the speed and reduced effort of e-bikes for their regular commutes.
+- Docked Bikes: The presence of docked bikes only in the casual rider category might indicate a legacy system or special bikes available only at certain stations, potentially tourist-oriented locations.
+
+
+#### Temporal Patterns
+The third query (granular) mainly shows:
+
+- Peak Usage Periods:
+High ride counts are observed during working hours (7 AM to 7 PM) on weekdays, suggesting that many riders are commuting.
+Weekends have relatively fewer morning rides but experience significant increases in the afternoon and early evening hours, indicating a focus on leisure activities.
+Month-wise, summer and late spring months (e.g., June, July) exhibit higher ride volumes, correlating with favorable weather conditions and hollydays.
+
+- Average Ride Duration (Ride Usage Trends)
+
+Extended Rides:
+Leisure hours, weekends, and evenings show higher average ride durations (sometimes exceeding 20–30 minutes). This pattern likely indicates casual riders using the service for exploration or recreational purposes.
+Month-wise, ride durations tend to be higher in warm months (e.g., July and August), coinciding with leisurely activities.
+
+Short Rides:
+Commute-focused periods (weekday mornings and evenings) have shorter average durations (10–15 minutes), aligned with quick trips for work-related travel.
+
+After the 3rd query, I broke the analysis into separate time focused queries, which offers several advantages:
+
+Clarity of insights: Each focused query makes specific patterns more apparent and interpretable, monthly, weekly and daily.
+Ease of visualization: The simpler queries are much easier to turn into clear, impactful charts.
+Segmentation by user type: These queries add the crucial member/casual dimension that the third query lacks.
+Different ordering priorities: Each query can order results to highlight different priorities (seasonal peaks, busiest days, etc.)
+
+
+#### Duration distribution by user type. Median and Mean.
+The previous queries gave me information about ride counts and average durations across different dimensions (user types, time periods, bike types). However, averages alone can be misleading when we have skewed distributions, which is common in ride duration data.
+This query addresses that limitation by calculating both the median and mean duration for each user type. This comparison tells me something fundamentally important about the data distribution:
+
+Mean vs. Median Comparison
+Casual Riders: Mean = 27.74 minutes, Median = 11 minutes
+Member Riders: Mean = 12.03 minutes, Median = 8 minutes
+Since the mean is significantly higher than the median in both cases (especially for casual riders), it suggests that ride duration data is right-skewed, meaning some casual riders take very long rides that inflate the mean.
+
+Understanding the Distribution Shape
+The large gap between mean and median for casual riders suggests a subset of long rides is affecting the average.
+Members have a smaller gap between mean and median, indicating a more consistent and predictable ride duration.
+
+Operational and Business Implications
+Bike Availability & Demand Planning: Since half of casual rides are under 11 minutes, but some are very long, planners need to factor in both typical and extreme cases for bike availability.
+Pricing Strategy: If some casual riders are taking very long rides, you could explore whether they’re tourists or users misusing the system. Adjusting pricing (e.g., charging more for very long trips) could balance usage.
+Potential Anomalies: Some casual rides might be so long that they indicate user forgetfulness (e.g., not ending trips properly). Investigating these cases could reduce operational inefficiencies.
+
+
+
+
+
+
   
 Summary:
   
@@ -160,6 +196,10 @@ Summary:
 |Prefer using bikes throughout the day, more frequently over the weekends in summer and spring for leisure activities.|Prefer riding bikes on week days during commute hours (8 am / 5pm) in summer and spring.|
 |Travel 2 times longer but less frequently than members.|Travel more frequently but shorter rides (approximately half of casual riders' trip duration).|
 |Start and end their journeys near parks, museums, along the coast and other recreational sites.|Start and end their trips close to universities, residential and commercial areas.|  
+
+## Share
+Data Visualization: [Tableau]
+...relevant tables for the analysis and visualized them in Tableau.
   
 ## Act
 After identifying the differences between casual and member riders, marketing strategies to target casual riders can be developed to persuade them to become members.  
