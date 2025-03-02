@@ -59,7 +59,7 @@ To manage the dataset efficiently, BigQuery is employed for combining and cleani
 Microsoft Excel's worksheet capacity is limited to 1,048,576 rows, making it unsuitable for handling large datasets. With over 5.7 million rows of data, BigQuery offers the required scalability to manage such volumes effectively.
 
 ### Combining the Data
-First I check if all tables share the same name and quantity of columns, then the data is merged using an SQL query. The 12 CSV files are uploaded to the dataset '2023_tripdata', and a new table named "combined_data" is created, consolidating 5,719,877 rows of data for the entire year.
+First I check if all tables share the same name and quantity of columns, then the data is merged using an SQL query. The 12 CSV files are uploaded to the dataset '2023_tripdata', and a new table named "2023_tripdata_combined" is created, consolidating 5,719,877 rows of data for the entire year.
 
 
 ![image](https://github.com/user-attachments/assets/dadc21ec-ec14-431c-87dc-107e2bb50e9b)
@@ -106,7 +106,7 @@ So, the columns that need to be removed are: start_station_id and end_station_id
 
 ### Data Cleaning
 
-Here I create a new table, only incluiding rides duration that lasts longer than 1 minute and less than a day, using CASE on day_of_week and month for further analysis adding three new columns (ride_length, day_of_week and month), and deleting all missing values using WHERE IS NOT NULL. 
+Here I create a new table, called 'new_2023_tripdata_combined' only incluiding rides duration that lasts longer than 1 minute and less than a day, using CASE on day_of_week and month for further analysis adding three new columns (ride_length, day_of_week and month), and deleting all missing values using WHERE IS NOT NULL. 
 So, in total 1,476,445 rows are removed in this step.
 
 Then I set ride_id as primary key, and use ROUND on ride_lenght to round minutes.
@@ -119,20 +119,23 @@ The analysis question is: How do casual riders and annual members differ in thei
 #### User Segmentation Analysis
 My first query shows a clear distinction between member and casual riders:
 
-![image](https://github.com/user-attachments/assets/09f8384f-bcef-45eb-af52-01cc72435431)
+
+![image](https://github.com/user-attachments/assets/6988c4dc-dce6-495f-93e9-61fba5b2e6f0)
 
 
-- Usage Volume: Members (3,660,698 rides) account for about 64% of total rides, while casual riders (2,059,179 rides) make up 36%. This indicates your subscription model is successfully capturing the majority of rides.
 
-- Ride Duration: There's a striking difference in how these groups use the service. Casual riders take significantly longer trips (27.7 minutes on average) compared to members (12.0 minutes). This suggests members are primarily using the service for efficient, purposeful transportation like commuting, while casual riders are more likely using it for leisure, sightseeing, or recreation.
+- Usage Volume: Members (2,738,451 rides) account for about 65% of total rides, while casual riders (1,504,981 rides) make up 35%. This indicates your subscription model is successfully capturing the majority of rides.
 
-- Geographic Diversity: Members start their rides from more unique locations (1,274,765) than casual riders (766,925), indicating they use the system more widely across the service area. This suggests members integrate bike-sharing more thoroughly into their daily lives, while casual riders might concentrate around tourist attractions, parks, or popular destinations.
+- Ride Duration: There's a striking difference in how these groups use the service. Casual riders take significantly longer trips (22.7 minutes on average) compared to members (11.89 minutes). This suggests members are primarily using the service for efficient, purposeful transportation like commuting, while casual riders are more likely using it for leisure, sightseeing, or recreation.
+
+- Geographic Diversity: Members start their rides from more unique locations (940,972) than casual riders (563,932), indicating they use the system more widely across the service area. This suggests members integrate bike-sharing more thoroughly into their daily lives, while casual riders might concentrate around tourist attractions, parks, or popular destinations.
 
 
 #### Bike Type Preferences
 The second query reveals interesting equipment preferences:
 
-![image](https://github.com/user-attachments/assets/06697382-a4ba-46f8-aa85-f01a9e3f8ec6)
+
+![image](https://github.com/user-attachments/assets/4703b740-b4fb-45e8-a95f-7893fe50c40e)
 
 
 - Casual Riders: Among casual riders, classic bikes are most popular (860,517 trips), followed by electric bikes (569,092 trips), with relatively few docked bike trips (75,372). The preference for classic bikes might indicate price sensitivity (if e-bikes cost more) or that many casual riders enjoy the exercise aspect of cycling.
@@ -149,11 +152,9 @@ Weekends have relatively fewer morning rides but experience significant increase
 Month-wise, summer and late spring months (e.g., June, July) exhibit higher ride volumes, correlating with favorable weather conditions and hollydays.
 
 - Average Ride Duration (Ride Usage Trends)
-
 Extended Rides:
 Leisure hours, weekends, and evenings show higher average ride durations (sometimes exceeding 20–30 minutes). This pattern likely indicates casual riders using the service for exploration or recreational purposes.
 Month-wise, ride durations tend to be higher in warm months (e.g., July and August), coinciding with leisurely activities.
-
 Short Rides:
 Commute-focused periods (weekday mornings and evenings) have shorter average durations (10–15 minutes), aligned with quick trips for work-related travel.
 
@@ -164,32 +165,32 @@ Ease of visualization: The simpler queries are much easier to turn into clear, i
 Segmentation by user type: These queries add the crucial member/casual dimension that the third query lacks.
 Different ordering priorities: Each query can order results to highlight different priorities (seasonal peaks, busiest days, etc.)
 
+Monthly
+![image](https://github.com/user-attachments/assets/34b87fc4-b2a8-47cc-8b5e-43f73dd99ca8)
 
-![image](https://github.com/user-attachments/assets/daa8b4b1-b087-43a8-be10-ef737acc4ad7)
+Day of the week
+![image](https://github.com/user-attachments/assets/46980013-47fa-482e-a841-83968e4876dd)
 
-
-![image](https://github.com/user-attachments/assets/b71f2da4-0f9b-4f77-bae8-9efc95a6d820)
-
-
-![image](https://github.com/user-attachments/assets/9a5dff86-30bb-47b6-a157-52e69e58146d)
+Hour of the day
+![image](https://github.com/user-attachments/assets/48bdd48b-5bd3-429c-a536-295dc3fdebf9)
 
 
 
 #### Duration distribution by user type. Median and Mean.
 The previous queries gave me information about ride counts and average durations across different dimensions (user types, time periods, bike types). However, averages alone can be misleading when we have skewed distributions, which is common in ride duration data.
-This query addresses that limitation by calculating both the median and mean duration for each user type. This comparison tells me something fundamentally important about the data distribution:
+The next query addresses that limitation by calculating both the median and mean duration for each user type. This comparison tells me something fundamentally important about the data distribution:
 
 Mean vs. Median Comparison
-Casual Riders: Mean = 27.74 minutes, Median = 11 minutes
-Member Riders: Mean = 12.03 minutes, Median = 8 minutes
-Since the mean is significantly higher than the median in both cases (especially for casual riders), it suggests that ride duration data is right-skewed, meaning some casual riders take very long rides that inflate the mean.
+Casual Riders: Mean = 22.72 minutes, Median = 12 minutes
+Member Riders: Mean = 11.89 minutes, Median = 8 minutes
+Since the mean is higher than the median in both cases (especially for casual riders), it suggests that ride duration data is right-skewed, meaning some casual riders take very long rides that inflate the mean.
 
 Understanding the Distribution Shape
 The large gap between mean and median for casual riders suggests a subset of long rides is affecting the average.
 Members have a smaller gap between mean and median, indicating a more consistent and predictable ride duration.
 
 Operational and Business Implications
-Bike Availability & Demand Planning: Since half of casual rides are under 11 minutes, but some are very long, planners need to factor in both typical and extreme cases for bike availability.
+Bike Availability & Demand Planning: Since half of casual rides are under 12 minutes, but some are very long, planners need to factor in both typical and extreme cases for bike availability.
 Pricing Strategy: If some casual riders are taking very long rides, you could explore whether they’re tourists or users misusing the system. Adjusting pricing (e.g., charging more for very long trips) could balance usage.
 Potential Anomalies: Some casual rides might be so long that they indicate user forgetfulness (e.g., not ending trips properly). Investigating these cases could reduce operational inefficiencies.
 
@@ -206,9 +207,12 @@ Most Popular Start and End Stations:
 - Useful for service adjustments, ensuring that stations with high arrivals have enough docking space.
 - Helps in predicting future station placement needs.
 
-![image](https://github.com/user-attachments/assets/c7cfad2d-3c4e-49b6-91ab-50a4e90737b8)
 
-![image](https://github.com/user-attachments/assets/914debd0-8e05-4324-af68-f35f7875524f)
+![image](https://github.com/user-attachments/assets/ee192a48-2989-4b47-b77b-2a2851e44499)
+
+
+![image](https://github.com/user-attachments/assets/4f154bec-8d97-4d28-9b1f-9d22f9c72e54)
+
 
 Route Analysis
 - Identifies the most frequently used routes.
@@ -218,7 +222,8 @@ Route Analysis
 - Useful for marketing and promotions—discounts or incentives can be targeted at specific routes.
 - Supports infrastructure planning, like adding bike lanes along high-traffic routes.
 
-![image](https://github.com/user-attachments/assets/c6fb9a96-04ea-48b0-becf-e972e5be948f)
+![image](https://github.com/user-attachments/assets/aa509ecd-a2b6-4780-b066-fa989469c0c5)
+
 
 ### Summary:  
 Casual riders tend to take longer trips on average, but their ride durations are highly variable, often influenced by outliers. They are more likely to ride on weekends and during warmer months, suggesting a preference for recreational or tourism-based cycling. In contrast, annual members take shorter, more consistent trips, with higher usage during weekdays and peak commuting hours, indicating a reliance on bike-sharing for daily transportation.
