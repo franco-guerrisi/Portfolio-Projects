@@ -15,7 +15,7 @@ In this case study, I will take on the role of a junior data analyst at a fictio
   
 SQL Queries:  
 [Combining and Exploration SQL queries](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-)
-(https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics/blob/b52c26af04c5fbe31dc132af2a3eb76ff54cce82/Cleaning%20and%20Analyzing%20SQL%20queries)
+[Cleaning and Analyzing SQL queries](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-)
   
 Data Visualizations: [Tableau](https://public.tableau.com/app/profile/franco4920/vizzes)
 
