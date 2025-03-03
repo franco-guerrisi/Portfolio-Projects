@@ -15,7 +15,7 @@ In this case study, I will take on the role of a junior data analyst at a fictio
   
 SQL Queries:  
 Data Combining and Data Exploration:
-Data Cleaning and Data Analysis:
+Data Cleaning and Data Analysis: (https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics/blob/main/Cleaning%20and%20Analyzing%20SQL%20queries)
   
 Data Visualizations: [Tableau](https://public.tableau.com/app/profile/franco4920/vizzes)
 
