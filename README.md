@@ -283,6 +283,10 @@ Now, let's see the differences between members and casual regarding starting and
 Starting Station
 ![image](https://github.com/user-attachments/assets/fcefadf8-17b6-4084-9b30-b67d2a2c15f7)
 
+Ending Station
+![image](https://github.com/user-attachments/assets/4af7c0eb-ae37-412f-8fea-b7ae07a9afd5)
+
+
 
   
 ## Act
