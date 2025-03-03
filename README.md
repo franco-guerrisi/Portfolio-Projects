@@ -4,7 +4,7 @@ Course: [Google Data Analytics Capstone: Complete a Case Study](https://www.cour
 ## Introduction
 In this case study, I will take on the role of a junior data analyst at a fictional Cyclistic company , performing a variety of real-world tasks. And to address the key business questions, I will follow the six data analysis phases:
 
-[Ask](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics?tab=readme-ov-file#ask), 
+[Ask](ask), 
 [Prepare](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics?tab=readme-ov-file#prepare), 
 [Process](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics?tab=readme-ov-file#process), 
 [Analyze](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics?tab=readme-ov-file#analyze), 
