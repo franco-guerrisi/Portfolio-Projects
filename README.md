@@ -4,22 +4,20 @@ Course: [Google Data Analytics Capstone: Complete a Case Study](https://www.cour
 ## Introduction
 In this case study, I will take on the role of a junior data analyst at a fictional Cyclistic company , performing a variety of real-world tasks. And to address the key business questions, I will follow the six data analysis phases:
 
-[Ask] (https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/README.md#ask), 
+[Ask], 
 [Prepare], 
 [Process], 
 [Analyze], 
 [Share], and 
 [Act].
 
-### Data Source:
-[divvy_tripdata](https://divvy-tripdata.s3.amazonaws.com/index.html)
+### Data Source: [divvy_tripdata](https://divvy-tripdata.s3.amazonaws.com/index.html)
   
 SQL Queries:  
-[Explore and Process Data](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/01.%20Data%20Combining.sql)    
-[Data Cleaning]
-[Data Analysis]
+Data Combining and Data Exploration:
+Data Cleaning and Data Analysis:
   
-Data Visualizations: [Tableau](https://public.tableau.com/app/profile/somia.nasir/viz/bike-tripdata-casestudy/Dashboard1#1)  
+Data Visualizations: [Tableau](https://public.tableau.com/app/profile/franco4920/vizzes)
 
 ### Background
 Cyclistic operates a bike-share program with over 5,800 bicycles and 600 docking stations. What makes Cyclistic unique is its inclusive approach, offering reclining bikes, hand tricycles, and cargo bikes to accommodate individuals with disabilities and riders who cannot use a standard two-wheeled bike. While the majority of users prefer traditional bicycles, around 8% take advantage of these assistive options. Most Cyclistic riders use the service for leisure, although approximately 30% rely on it for daily commuting.
