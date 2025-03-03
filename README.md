@@ -2,14 +2,7 @@
 # Capstone Project: Cyclistic Case Study
 Course: [Google Data Analytics Capstone: Complete a Case Study](https://www.coursera.org/learn/google-data-analytics-capstone)
 ## Introduction
-In this case study, I will take on the role of a junior data analyst at a fictional Cyclistic company , performing a variety of real-world tasks. And to address the key business questions, I will follow the six data analysis phases:
-
-[Ask](ask), 
-[Prepare](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics?tab=readme-ov-file#prepare), 
-[Process](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics?tab=readme-ov-file#process), 
-[Analyze](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics?tab=readme-ov-file#analyze), 
-[Share](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics?tab=readme-ov-file#share), and 
-[Act](https://github.com/franco-guerrisi/Cyclistic-Capstone-Project-Google-Data-Analytics?tab=readme-ov-file#act).
+In this case study, I will take on the role of a junior data analyst at a fictional Cyclistic company , performing a variety of real-world tasks. And to address the key business questions, I will follow the six data analysis phases: Ask, Prepare, Process, Analyze, Share, and Act.
 
 ### Data Source: [divvy_tripdata](https://divvy-tripdata.s3.amazonaws.com/index.html)
   
@@ -165,12 +158,15 @@ Segmentation by user type: These queries add the crucial member/casual dimension
 Different ordering priorities: Each query can order results to highlight different priorities (seasonal peaks, busiest days, etc.)
 
 Monthly
+
 ![image](https://github.com/user-attachments/assets/34b87fc4-b2a8-47cc-8b5e-43f73dd99ca8)
 
 Day of the week
+
 ![image](https://github.com/user-attachments/assets/46980013-47fa-482e-a841-83968e4876dd)
 
 Hour of the day
+
 ![image](https://github.com/user-attachments/assets/48bdd48b-5bd3-429c-a536-295dc3fdebf9)
 
 
