@@ -232,7 +232,58 @@ To convert casual riders into members, Cyclistic could offer targeted incentives
 
 ## Share
 Data Visualization: [Tableau]
-...relevant tables for the analysis and visualized them in Tableau.
+To answer the first question: "How do casual riders and annual members differ in their usage of Cyclistic’s services?" The first graphic shows how they compare in usage.
+
+![Rideable Types By User](https://github.com/user-attachments/assets/fb2fbbe1-b206-4f38-b7da-72b4b590a16c)
+
+Here we can see that members are making almost 65% of the total vs the almost 35% of casual riders. Overall, the classic bike is the most used, followed by the electric. Docked bikers were used only by casual riders.
+
+Next, the number of trips by user and by rideable types trhough the year.
+
+![Annual Rides by Rideable Type](https://github.com/user-attachments/assets/1176b74b-6016-47d4-aa25-b2c07cbdc697)
+
+And now distributed in months, day of the week and hours.
+
+![Rides By Month](https://github.com/user-attachments/assets/ea8ed5ed-e2dd-4778-9024-331d8a2de612)
+
+![Rides By Day of Week](https://github.com/user-attachments/assets/9fb54ba9-544c-4067-bf0c-4b2249ff050c)
+
+![Rides By Hour](https://github.com/user-attachments/assets/439173ac-4d18-4659-bb01-c14e77a03563)
+
+Trend Pattern: In each graph, members consistently have more rides than casual users across all time intervals.
+
+Seasonal & Daily Trends: The graphs suggest that members have a steady usage pattern, while casual riders show more fluctuations, especially during weekends and warmer months.
+
+Rides by Month:
+The highest number of rides occurs in July for both groups.
+Casual users have a steeper decline in colder months (October–February), while members ride more consistently year-round.
+Winter months (December–February) have the fewest rides for both groups.
+
+Rides by Day of the Week:
+Members ride consistently throughout the week, peaking slightly midweek (Tuesday to Thursday).
+Casual users strongly favor weekends, peaking on Saturday with over 300K rides, suggesting leisure use.
+Lowest usage for both groups happens on Monday.
+
+Rides by Hour:
+Member rides peak around 17:00 (5 PM) with almost 300K rides, likely due to commuting hours.
+Casual users have a more gradual increase, peaking later in the evening. 
+Very few rides occur between midnight and early morning.
+
+Let's see the monthly average ride duration by users.
+
+![Avg Ride Lenght (1)](https://github.com/user-attachments/assets/5ad104c3-473a-4463-b243-edf66436e897)
+
+Casual riders have significantly longer average ride times than members, every month.
+Peak ride lengths for casual users occur in summer months (May–August), reaching a maximum of 25.7 minutes in July.
+Members have a much more stable and lower average ride length, fluctuating between 10 and 13.6 minutes throughout the year.
+Winter months (January–February, November–December) show shorter ride times for both groups, but casual users still take longer trips on average.
+
+Now, let's see the differences between members and casual regarding starting and ending stations. 
+
+Starting Station
+![image](https://github.com/user-attachments/assets/fcefadf8-17b6-4084-9b30-b67d2a2c15f7)
+
+
   
 ## Act
 After identifying the differences between casual and member riders, marketing strategies to target casual riders can be developed to persuade them to become members.  
