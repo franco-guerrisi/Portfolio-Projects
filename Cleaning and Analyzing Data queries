@@ -1,0 +1,156 @@
+-- Data Analysis
+-- User segmentation
+
+SELECT
+  member_casual,
+  COUNT(*) AS ride_count,
+  AVG(TIMESTAMP_DIFF(ended_at, started_at, MINUTE)) AS avg_ride_duration_minutes,
+  COUNT(DISTINCT CONCAT(CAST(start_lat AS STRING), CAST(start_lng AS STRING))) AS unique_start_locations
+FROM
+  `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+GROUP BY
+  member_casual;
+
+
+SELECT COUNT (DISTINCT ride_id)
+FROM `cyclist-415619.Cyclist.new_2023_tripdata_combined`;
+
+
+
+-- Checking the bikes types used by riders
+
+SELECT member_casual, rideable_type, COUNT(*) AS total_trips
+FROM `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+GROUP BY member_casual, rideable_type
+ORDER BY member_casual, total_trips;
+
+
+
+-- Let's analyze patterns over time:
+
+SELECT
+  EXTRACT(MONTH FROM started_at) AS month,
+  EXTRACT(DAYOFWEEK FROM started_at) AS day_of_week,
+  EXTRACT(HOUR FROM started_at) AS hour_of_day,
+  COUNT(*) AS ride_count,
+  AVG(TIMESTAMP_DIFF(ended_at, started_at, MINUTE)) AS avg_ride_duration_minutes
+FROM
+  `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+GROUP BY
+  month, day_of_week, hour_of_day
+ORDER BY
+  month, day_of_week, hour_of_day;
+
+
+
+-- Let's get the number of trips per month
+
+SELECT month, member_casual, COUNT(ride_id) AS total_trips
+FROM `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+GROUP BY month, member_casual
+ORDER BY total_trips DESC;
+
+
+-- Now, the number of trips per day of week
+
+SELECT day_of_week, member_casual, COUNT(ride_id) AS total_trips
+FROM `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+GROUP BY day_of_week, member_casual
+ORDER BY total_trips DESC;
+
+
+-- And per hour...
+
+SELECT EXTRACT(HOUR FROM started_at) AS hour_of_day, member_casual, COUNT(ride_id) AS total_trips
+FROM `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+GROUP BY hour_of_day, member_casual
+ORDER BY total_trips DESC;
+
+
+
+-- Duration distribution by user type. Median and Mean.
+WITH ride_durations AS (
+  SELECT
+    member_casual,
+    TIMESTAMP_DIFF(ended_at, started_at, MINUTE) AS duration_minutes
+  FROM
+    `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+)
+
+SELECT DISTINCT
+  member_casual,
+  PERCENTILE_CONT(duration_minutes, 0.5) OVER(PARTITION BY member_casual) AS median_duration_minutes,
+  AVG(duration_minutes) OVER(PARTITION BY member_casual) AS mean_duration_minutes
+FROM
+  ride_durations;
+
+
+-- Now, the average ride_length per month, in minutes.
+
+SELECT month, member_casual, ROUND(AVG(ride_length),2) AS avg_ride_duration
+FROM `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+GROUP BY month, member_casual;
+
+-- Now, the average ride_length per day of week, in minutes.
+
+SELECT day_of_week, member_casual, ROUND(AVG(ride_length), 2) AS avg_ride_duration
+FROM `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+GROUP BY day_of_week, member_casual;
+
+-- And now, th average ride_length per hour, in minutes.
+
+SELECT EXTRACT(HOUR FROM started_at) AS hour_of_day, member_casual, ROUND(AVG(ride_length),2) AS avg_ride_duration
+FROM `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+GROUP BY hour_of_day, member_casual;
+
+
+
+-- Most popular start stations
+SELECT
+  start_station_name,
+  member_casual,
+  COUNT(*) AS departure_count,
+  AVG(start_lat) AS lat,
+  AVG(start_lng) AS lng
+FROM
+  `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+WHERE 
+  start_station_name IS NOT NULL
+GROUP BY
+  start_station_name, member_casual
+ORDER BY
+  departure_count DESC;
+
+-- Most popular end stations
+SELECT
+  end_station_name,
+  member_casual,
+  COUNT(*) AS arrival_count,
+  AVG(end_lat) AS lat,
+  AVG(end_lng) AS lng
+FROM
+  `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+WHERE
+  end_station_name IS NOT NULL
+GROUP BY
+  end_station_name, member_casual
+ORDER BY
+  arrival_count DESC;
+
+
+
+-- Route analysis
+
+SELECT
+  start_station_name,
+  end_station_name,
+  COUNT(*) AS trip_count
+FROM
+  `cyclist-415619.Cyclist.new_2023_tripdata_combined`
+WHERE
+  start_station_name IS NOT NULL
+  AND end_station_name IS NOT NULL
+GROUP BY
+  start_station_name, end_station_name
+ORDER BY
+  trip_count DESC;
