@@ -280,20 +280,46 @@ Winter months (January–February, November–December) show shorter ride times 
 
 Now, let's see the differences between members and casual regarding starting and ending stations. 
 
-Starting Station
+
 ![image](https://github.com/user-attachments/assets/fcefadf8-17b6-4084-9b30-b67d2a2c15f7)
 
-Ending Station
+
 ![image](https://github.com/user-attachments/assets/4af7c0eb-ae37-412f-8fea-b7ae07a9afd5)
 
 
+Casual riders tend to start their trips from stations located near popular recreational and tourist attractions such as museums, parks, beaches, and harbor points. In contrast, members typically begin their journeys from stations situated in more practical, everyday locations, including universities, residential neighborhoods, restaurants, hospitals, grocery stores, theaters, schools, banks, factories, train stations, parks, and plazas.
 
-  
+A similar pattern is evident in the locations where trips end. Casual riders often conclude their journeys near parks, museums, and other leisure destinations, while members are more likely to finish their rides in areas associated with daily routines, such as universities, residential zones, and commercial districts.
+
+This distinction highlights the different purposes of bike usage between the two groups—casual riders primarily use bikes for recreational outings, whereas members rely on them as a key mode of daily transportation.
+
+### Conclusion:
+
+Casual Riders:
+- Distributed rides throughout the day with less pronounced commuting peaks
+- Strongly prefer weekend riding (particularly Saturdays)
+- Show dramatic seasonal usage, heavily concentrated in summer months with minimal winter activity
+- Primarily use bikes for leisure and recreational purposes
+- Travel routes are approximately twice as long but less frequent than members
+
+Members:
+- Show distinct commuting patterns with clear morning and evening peaks (8am and 5pm)
+- Maintain consistent weekday usage with only slight weekend decline
+- Demonstrate more consistent year-round usage, though still with summer preference
+- Use bikes as reliable transportation for daily routines and commutes
+- Take shorter, more frequent trips (approximately half the duration of casual rides)
+
 ## Act
-After identifying the differences between casual and member riders, marketing strategies to target casual riders can be developed to persuade them to become members.  
-Recommendations:  
-1. Marketing campaigns might be conducted in spring and summer at tourist/recreational locations popular among casual riders.
-2. Casual riders are most active on weekends and during the summer and spring, thus they may be offered seasonal or weekend-only memberships.
-3. Casual riders use their bikes for longer durations than members. Offering discounts for longer rides may incentivize casual riders and entice members to ride for longer periods of time.
-4. 
-To convert casual riders into members, Cyclistic could offer targeted incentives such as discounted first-month memberships, loyalty rewards, or flexible pricing plans. Highlighting the cost savings of membership for frequent riders, improving convenience with station expansions, and offering perks like priority access or referral bonuses could also increase conversions. Additionally, promoting the benefits of membership through personalized marketing and in-app notifications at the end of casual trips may encourage sign-ups.
+This behavioral divide suggests casual riders view the service as an occasional leisure activity, while members integrate it into their daily transportation needs. Marketing strategies should bridge this gap by highlighting how membership transforms an occasional recreational tool into a convenient daily utility, emphasizing the practical benefits of membership beyond just financial savings.
+Converting casual riders requires demonstrating how bike sharing can become part of their regular routine beyond just weekend recreation, possibly by emphasizing shorter, more frequent trips for daily errands and commuting as a complement to their existing leisurely weekend rides.
+
+Recommendations:
+- Create weekend-focused membership tiers for casual riders who primarily use the service on weekends.
+- Introduce 3-4 month summer memberships targeting casual riders who show strong seasonal usage patterns.
+- Since casual riders take consistently longer trips, highlight cost savings for longer rides through membership.
+
+Digital Marketing Approaches
+- Concentrate conversion campaigns in spring (March-April) before peak season, and target weekend riders specifically in these campaigns at tourist/recreational popular locations.
+- Deploy ads during peak casual riding hours (afternoons and weekends) with location-based mobile marketing near popular stations.
+- Implement app notifications for casual riders after completing their 5th or 10th ride in a month, showing membership cost comparison.
+- Offer loyalty rewards after certain number of rides, or give points for each ride made, and let them exchange them only if they become members.
